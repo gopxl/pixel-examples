@@ -5,13 +5,13 @@ import (
 	"math/rand"
 	"sync"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
 )
 
 // -------------------------------------------------------------------------
 // Reusable modified starfiled
-// - Original: "github.com/faiface/pixel-examples/community/starfield"
+// - Original: "github.com/gopxl/pixel-examples/community/starfield"
 // - Encapsulated by nanitefactory
 
 // -------------------------------------------------------------------------

@@ -40,12 +40,12 @@
 #### Windows
 
 ```
-$ go get -v github.com/faiface/pixel-examples/community/amidakuji/...
+$ go get -v github.com/gopxl/pixel-examples/community/amidakuji/...
 $ go get -v -u github.com/go-bindata/go-bindata/...
 ```
 
 ```
-$ cd $GOPATH/src/github.com/faiface/pixel-examples/community/amidakuji/
+$ cd $GOPATH/src/github.com/gopxl/pixel-examples/community/amidakuji/
 $ make
 ```
 
@@ -62,12 +62,12 @@ $ sudo apt install libglib2.0-dev libpango1.0-dev libasound2-dev libgdk-pixbuf2.
 ```
 
 ```
-$ go get -v github.com/faiface/pixel-examples/community/amidakuji/...
+$ go get -v github.com/gopxl/pixel-examples/community/amidakuji/...
 $ go get -v -u github.com/go-bindata/go-bindata/...
 ```
 
 ```
-$ cd $GOPATH/src/github.com/faiface/pixel-examples/community/amidakuji/
+$ cd $GOPATH/src/github.com/gopxl/pixel-examples/community/amidakuji/
 $ make
 ```
 
@@ -76,8 +76,8 @@ $ make
 ## External sources
 
 #### Library
-- [Pixel](https://github.com/faiface/pixel/tree/7cff3ce3aed80129b7b1dd57e63439426e11b6ee)
-- [Beep](https://github.com/faiface/beep/tree/63cc6fbbac46dba1a03e55f0ebc965d6c82ca8e1)
+- [Pixel](https://github.com/gopxl/pixel/v2/tree/7cff3ce3aed80129b7b1dd57e63439426e11b6ee)
+- [Beep](https://github.com/gopxl/beep/tree/63cc6fbbac46dba1a03e55f0ebc965d6c82ca8e1)
 - [GLFW 3.2](https://github.com/go-gl/glfw/tree/513e4f2bf85c31fba0fc4907abd7895242ccbe50/v3.2/glfw)
 - [dialog](https://github.com/sqweek/dialog/tree/2f9d9e5dd848a3bad4bdd0210c73bb90c13a3791)
 

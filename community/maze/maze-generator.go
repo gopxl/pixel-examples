@@ -15,10 +15,10 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel-examples/community/maze/stack"
-	"github.com/faiface/pixel/imdraw"
-	"github.com/faiface/pixel/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel-examples/community/maze/stack"
+	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/pixelgl"
 
 	"github.com/pkg/profile"
 	"golang.org/x/image/colornames"

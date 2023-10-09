@@ -1,5 +1,5 @@
-# go get -u github.com/faiface/pixel-examples
-# cd ~/go/src/github.com/faiface/pixel-examples/community/seascape-shader
+# go get -u github.com/gopxl/pixel-examples
+# cd ~/go/src/github.com/gopxl/pixel-examples/community/seascape-shader
 
 all:
 	go build

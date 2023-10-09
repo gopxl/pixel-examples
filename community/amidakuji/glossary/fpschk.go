@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
-	"github.com/faiface/pixel/text"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/text"
 	"golang.org/x/image/colornames"
 )
 

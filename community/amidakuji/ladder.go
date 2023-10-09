@@ -4,10 +4,10 @@ import (
 	"math/rand"
 	"sync"
 
-	gg "github.com/faiface/pixel-examples/community/amidakuji/glossary"
+	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
 	"golang.org/x/image/colornames"
 )
 

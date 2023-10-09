@@ -3,8 +3,8 @@ package main
 import (
 	"math"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/pixelgl"
 )
 
 // ScrollingBackground stores all needed information to scroll a background

@@ -4,8 +4,8 @@ import (
 	"image/png"
 	"os"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/pixelgl"
 )
 
 var gopherimg *pixel.Sprite

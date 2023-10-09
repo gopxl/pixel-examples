@@ -15,13 +15,13 @@ import (
 	"time"
 	"unsafe"
 
-	gg "github.com/faiface/pixel-examples/community/amidakuji/glossary"
-	"github.com/faiface/pixel-examples/community/amidakuji/glossary/jukebox"
+	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
+	"github.com/gopxl/pixel-examples/community/amidakuji/glossary/jukebox"
 	glfw "github.com/go-gl/glfw/v3.2/glfw"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
-	"github.com/faiface/pixel/text"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/text"
 	"github.com/sqweek/dialog"
 	"golang.org/x/image/colornames"
 )

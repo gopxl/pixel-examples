@@ -6,9 +6,9 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
-	"github.com/faiface/pixel/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/pixelgl"
 )
 
 var (

@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
-	"github.com/faiface/pixel/text"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/text"
 	"golang.org/x/image/colornames"
 	"golang.org/x/image/font/basicfont"
 )

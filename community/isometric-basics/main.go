@@ -4,8 +4,8 @@ import (
 	"image"
 	"os"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/pixelgl"
 
 	_ "image/png"
 )

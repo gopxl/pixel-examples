@@ -4,11 +4,11 @@ import (
 	"image/color"
 	"sync"
 
-	gg "github.com/faiface/pixel-examples/community/amidakuji/glossary"
+	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
-	"github.com/faiface/pixel/text"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/text"
 	"golang.org/x/image/colornames"
 )
 

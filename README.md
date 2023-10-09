@@ -1,6 +1,6 @@
-## Pixel Examples
+## Pixel 2 Examples
 
-This repository contains a few examples demonstrating [Pixel](https://github.com/faiface/pixel)'s functionality.
+This repository contains a few examples demonstrating [GoPxl's Pixel](https://github.com/gopxl/pixel/v2)'s functionality.
 
 **To run an example**, navigate to its directory, then `go run` the `main.go` file. For example:
 

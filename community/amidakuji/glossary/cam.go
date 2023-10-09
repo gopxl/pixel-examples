@@ -3,8 +3,8 @@ package glossary
 import (
 	"math"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
 	"golang.org/x/image/colornames"
 )
 

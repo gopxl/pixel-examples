@@ -13,9 +13,9 @@ import (
 
 	_ "image/png"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
-	"github.com/faiface/pixel/pixelgl"
+	pixel "github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/pixelgl"
 	"github.com/pkg/errors"
 	"golang.org/x/image/colornames"
 )

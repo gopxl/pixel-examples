@@ -7,11 +7,11 @@ import (
 	"sync"
 	"time"
 
-	gg "github.com/faiface/pixel-examples/community/amidakuji/glossary"
+	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
 
-	"github.com/faiface/beep"
-	"github.com/faiface/beep/speaker"
-	"github.com/faiface/beep/vorbis"
+	"github.com/gopxl/beep"
+	"github.com/gopxl/beep/speaker"
+	"github.com/gopxl/beep/vorbis"
 )
 
 // -------------------------------------------------------------------------

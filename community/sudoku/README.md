@@ -41,5 +41,5 @@ Run it the usual way:
 [go]: https://golang.org
 [go-sudoku]: https://github.com/jwangsadinata/go-sudoku
 [jwangsadinata]: https://github.com/jwangsadinata
-[pixel]: https://github.com/faiface/pixel
+[pixel]: https://github.com/gopxl/pixel/v2
 [sudoku-wiki]: https://en.wikipedia.org/wiki/Sudoku

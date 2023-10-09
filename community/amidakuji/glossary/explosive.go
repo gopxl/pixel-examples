@@ -5,13 +5,13 @@ import (
 	"math/rand"
 	"sync"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
 )
 
 // -------------------------------------------------------------------------
 // explosive.go
-// - Original idea: "github.com/faiface/pixel-examples/community/bouncing"
+// - Original idea: "github.com/gopxl/pixel-examples/community/bouncing"
 
 // --------------------------------------------------------------------
 

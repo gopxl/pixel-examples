@@ -2,7 +2,7 @@
 
 Created by [Stephen Chavez](https://github.com/redragonx)
 
-This uses the game engine: Pixel. Install it here: https://github.com/faiface/pixel
+This uses the game engine: Pixel. Install it here: https://github.com/gopxl/pixel/v2
 
 I made this to improve my understanding of Go and some game concepts with some basic maze generating algorithms.
 

@@ -3,9 +3,9 @@ package main
 import (
 	"image/color"
 
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
-	"github.com/faiface/pixel/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/pixelgl"
 )
 
 // These hold the state of whether we're placing the first or second point of the line.
