@@ -1,4 +1,4 @@
-## Pixel 2 Examples
+## Pixel Examples
 
 This repository contains a few examples demonstrating [GoPxl's Pixel](https://github.com/gopxl/pixel/v2)'s functionality.
 
