@@ -1,6 +1,6 @@
 module github.com/gopxl/pixel-examples
 
-go 1.21.0
+go 1.21
 
 require (
 	github.com/aquilax/go-perlin v1.1.0
