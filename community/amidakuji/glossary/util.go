@@ -13,9 +13,9 @@ import (
 	_ "image/gif"
 	_ "image/png"
 
-	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/text"
 	"github.com/golang/freetype/truetype"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/basicfont"
 )

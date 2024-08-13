@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 )
 
 const w, h = float64(1024), float64(512)
@@ -75,7 +75,7 @@ func (s *star) draw(imd *imdraw.IMDraw) {
 }
 
 func run() {
-	win, err := pixelgl.NewWindow(pixelgl.WindowConfig{
+	win, err := opengl.NewWindow(opengl.WindowConfig{
 		Bounds:      pixel.R(0, 0, w, h),
 		VSync:       true,
 		Undecorated: true,
@@ -93,19 +93,19 @@ func run() {
 	last := time.Now()
 
 	for !win.Closed() {
-		win.SetClosed(win.JustPressed(pixelgl.KeyEscape) || win.JustPressed(pixelgl.KeyQ))
+		win.SetClosed(win.JustPressed(opengl.KeyEscape) || win.JustPressed(opengl.KeyQ))
 
-		if win.Pressed(pixelgl.KeyUp) {
+		if win.Pressed(opengl.KeyUp) {
 			speed += 10
 		}
 
-		if win.Pressed(pixelgl.KeyDown) {
+		if win.Pressed(opengl.KeyDown) {
 			if speed > 10 {
 				speed -= 10
 			}
 		}
 
-		if win.Pressed(pixelgl.KeySpace) {
+		if win.Pressed(opengl.KeySpace) {
 			speed = 100
 		}
 
@@ -127,7 +127,7 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
 
 func random(min, max float64) float64 {

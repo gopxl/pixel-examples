@@ -5,10 +5,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
 	"github.com/golang/freetype/truetype"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/colornames"
 	"golang.org/x/image/font"
 )
@@ -37,11 +37,11 @@ func loadTTF(path string, size float64) (font.Face, error) {
 }
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Pixel Rocks!",
 		Bounds: pixel.R(0, 0, 1024, 768),
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -61,7 +61,7 @@ func run() {
 
 	for !win.Closed() {
 		txt.WriteString(win.Typed())
-		if win.JustPressed(pixelgl.KeyEnter) || win.Repeated(pixelgl.KeyEnter) {
+		if win.JustPressed(opengl.KeyEnter) || win.Repeated(opengl.KeyEnter) {
 			txt.WriteRune('\n')
 		}
 
@@ -74,5 +74,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

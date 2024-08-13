@@ -47,7 +47,7 @@ canvas.SetUniform(name string, value interface{})
 We create a handy function to do this:
 
 ``` go
-func EasyBindUniforms(c *pixelgl.Canvas, unifs ...interface{}) {
+func EasyBindUniforms(c *opengl.Canvas, unifs ...interface{}) {
 	if len(unifs)%2 != 0 {
 		panic("needs to be divisable by 2")
 	}

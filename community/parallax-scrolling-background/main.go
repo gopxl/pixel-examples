@@ -8,7 +8,7 @@ import (
 	_ "image/png"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 )
 
 func loadPicture(path string) (pixel.Picture, error) {
@@ -36,12 +36,12 @@ const (
 )
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Parallax scrolling demo",
 		Bounds: pixel.R(0, 0, windowWidth, windowHeight),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -70,5 +70,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

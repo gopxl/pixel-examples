@@ -7,10 +7,10 @@ import (
 
 	"golang.org/x/image/colornames"
 
-	"github.com/gopxl/pixel/v2"
 	"github.com/gopxl/pixel-examples/community/game_of_life/life"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 )
 
 var (
@@ -28,17 +28,17 @@ func init() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
 
 func run() {
 
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Pixel Rocks!",
 		Bounds: pixel.R(0, 0, *windowSize, *windowSize),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}

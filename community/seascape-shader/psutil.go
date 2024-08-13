@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 )
 
 // Pixel Shader utility functions
@@ -14,15 +14,14 @@ import (
 //
 // example:
 //
-//   var uTimeVar float32
-//   var uMouseVar mgl32.Vec4
+//	  var uTimeVar float32
+//	  var uMouseVar mgl32.Vec4
 //
-//   EasyBindUniforms(win.GetCanvas(),
-// 	     "u_time", &uTimeVar,
-// 	     "u_mouse", &uMouseVar,
-//   )
-//
-func EasyBindUniforms(c *pixelgl.Canvas, unifs ...interface{}) {
+//	  EasyBindUniforms(win.GetCanvas(),
+//		     "u_time", &uTimeVar,
+//		     "u_mouse", &uMouseVar,
+//	  )
+func EasyBindUniforms(c *opengl.Canvas, unifs ...interface{}) {
 	if len(unifs)%2 != 0 {
 		panic("needs to be divisable by 2")
 	}
@@ -33,8 +32,8 @@ func EasyBindUniforms(c *pixelgl.Canvas, unifs ...interface{}) {
 }
 
 // CenterWindow will... center the window
-func CenterWindow(win *pixelgl.Window) {
-	x, y := pixelgl.PrimaryMonitor().Size()
+func CenterWindow(win *opengl.Window) {
+	x, y := opengl.PrimaryMonitor().Size()
 	width, height := win.Bounds().Size().XY()
 	win.SetPos(
 		pixel.V(

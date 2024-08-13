@@ -4,7 +4,7 @@ import (
 	"math"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 )
 
 // ScrollingBackground stores all needed information to scroll a background
@@ -52,7 +52,7 @@ func (sb *ScrollingBackground) positionImages() {
 }
 
 // Update will move backgrounds certain pixels, depending of the amount of time passed
-func (sb *ScrollingBackground) Update(win *pixelgl.Window, dt float64) {
+func (sb *ScrollingBackground) Update(win *opengl.Window, dt float64) {
 	if math.Abs(sb.displacement) >= sb.width {
 		sb.displacement = 0
 		sb.positions[0], sb.positions[1] = sb.positions[1], sb.positions[0]

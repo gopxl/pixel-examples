@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	pixel "github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/text"
 )
 
 type EasyWindow1 struct {
-	win     *pixelgl.Window
+	win     *opengl.Window
 	txt     *text.Text
 	counter int
 }
@@ -20,7 +20,7 @@ func (w *EasyWindow1) Setup() error {
 	return nil
 }
 
-func (w *EasyWindow1) Win() *pixelgl.Window {
+func (w *EasyWindow1) Win() *opengl.Window {
 	return w.win
 }
 
@@ -42,7 +42,7 @@ func (w *EasyWindow1) Draw() error {
 }
 
 type EasyWindow2 struct {
-	win     *pixelgl.Window
+	win     *opengl.Window
 	txt     *text.Text
 	counter uint64
 }
@@ -53,7 +53,7 @@ func (w *EasyWindow2) Setup() error {
 	return nil
 }
 
-func (w *EasyWindow2) Win() *pixelgl.Window {
+func (w *EasyWindow2) Win() *opengl.Window {
 	return w.win
 }
 
@@ -74,10 +74,10 @@ func (w *EasyWindow2) Draw() error {
 	return nil
 }
 
-var wm *pixelgl.WindowManager = pixelgl.NewWindowManager()
+var wm *opengl.WindowManager = opengl.NewWindowManager()
 
 func run() {
-	w1, err := pixelgl.NewWindow(pixelgl.WindowConfig{
+	w1, err := opengl.NewWindow(opengl.WindowConfig{
 		Title:  "Main Window",
 		Bounds: pixel.R(0, 0, 200, 200),
 	})
@@ -86,7 +86,7 @@ func run() {
 		panic(err)
 	}
 
-	w2, err := pixelgl.NewWindow(pixelgl.WindowConfig{
+	w2, err := opengl.NewWindow(opengl.WindowConfig{
 		Title:  "Window 2",
 		Bounds: pixel.R(0, 0, 500, 200),
 	})
@@ -95,7 +95,7 @@ func run() {
 		panic(err)
 	}
 
-	wm.InsertWindows([]pixelgl.EasyWindow{
+	wm.InsertWindows([]opengl.EasyWindow{
 		&EasyWindow1{win: w1},
 		&EasyWindow2{win: w2},
 	})
@@ -109,5 +109,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

@@ -5,26 +5,26 @@ import (
 	"time"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 	"golang.org/x/image/colornames"
 )
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:     "Xor",
 		Bounds:    pixel.R(0, 0, 1024, 768),
 		Resizable: true,
 		VSync:     true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
 
 	imd := imdraw.New(nil)
 
-	canvas := pixelgl.NewCanvas(win.Bounds())
+	canvas := opengl.NewCanvas(win.Bounds())
 
 	start := time.Now()
 	for !win.Closed() {
@@ -72,5 +72,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

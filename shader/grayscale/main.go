@@ -5,12 +5,12 @@ import (
 	"os"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 )
 
 var gopherimg *pixel.Sprite
 
-func gameloop(win *pixelgl.Window) {
+func gameloop(win *opengl.Window) {
 	win.Canvas().SetFragmentShader(fragmentShader)
 
 	for !win.Closed() {
@@ -21,12 +21,12 @@ func gameloop(win *pixelgl.Window) {
 }
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Pixel Rocks!",
 		Bounds: pixel.R(0, 0, 325, 348),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -45,7 +45,7 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
 
 var fragmentShader = `

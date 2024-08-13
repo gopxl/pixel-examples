@@ -11,7 +11,7 @@ import (
 	_ "image/png"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 	"golang.org/x/image/colornames"
 )
 
@@ -29,11 +29,11 @@ func loadPicture(path string) (pixel.Picture, error) {
 }
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Pixel Rocks!",
 		Bounds: pixel.R(0, 0, 1024, 768),
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -72,21 +72,21 @@ func run() {
 		cam := pixel.IM.Scaled(camPos, camZoom).Moved(win.Bounds().Center().Sub(camPos))
 		win.SetMatrix(cam)
 
-		if win.Pressed(pixelgl.MouseButtonLeft) {
+		if win.Pressed(opengl.MouseButtonLeft) {
 			tree := pixel.NewSprite(spritesheet, treesFrames[rand.Intn(len(treesFrames))])
 			mouse := cam.Unproject(win.MousePosition())
 			tree.Draw(batch, pixel.IM.Scaled(pixel.ZV, 4).Moved(mouse))
 		}
-		if win.Pressed(pixelgl.KeyLeft) {
+		if win.Pressed(opengl.KeyLeft) {
 			camPos.X -= camSpeed * dt
 		}
-		if win.Pressed(pixelgl.KeyRight) {
+		if win.Pressed(opengl.KeyRight) {
 			camPos.X += camSpeed * dt
 		}
-		if win.Pressed(pixelgl.KeyDown) {
+		if win.Pressed(opengl.KeyDown) {
 			camPos.Y -= camSpeed * dt
 		}
-		if win.Pressed(pixelgl.KeyUp) {
+		if win.Pressed(opengl.KeyUp) {
 			camPos.Y += camSpeed * dt
 		}
 		camZoom *= math.Pow(camZoomSpeed, win.MouseScroll().Y)
@@ -106,5 +106,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

@@ -10,13 +10,13 @@ import (
 	"golang.org/x/image/colornames"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 	"github.com/salviati/go-tmx/tmx"
 )
 
 var clearColor = colornames.Skyblue
 
-func gameloop(win *pixelgl.Window, tilemap *tmx.Map) {
+func gameloop(win *opengl.Window, tilemap *tmx.Map) {
 	batches := make([]*pixel.Batch, 0)
 	batchIndices := make(map[string]int)
 	batchCounter := 0
@@ -48,16 +48,16 @@ func gameloop(win *pixelgl.Window, tilemap *tmx.Map) {
 		// Camera movement
 		cam := pixel.IM.Scaled(camPos, camZoom).Moved(win.Bounds().Center().Sub(camPos))
 		win.SetMatrix(cam)
-		if win.Pressed(pixelgl.KeyLeft) {
+		if win.Pressed(opengl.KeyLeft) {
 			camPos.X -= camSpeed * dt
 		}
-		if win.Pressed(pixelgl.KeyRight) {
+		if win.Pressed(opengl.KeyRight) {
 			camPos.X += camSpeed * dt
 		}
-		if win.Pressed(pixelgl.KeyDown) {
+		if win.Pressed(opengl.KeyDown) {
 			camPos.Y -= camSpeed * dt
 		}
-		if win.Pressed(pixelgl.KeyUp) {
+		if win.Pressed(opengl.KeyUp) {
 			camPos.Y += camSpeed * dt
 		}
 		camZoom *= math.Pow(camZoomSpeed, win.MouseScroll().Y)
@@ -119,13 +119,13 @@ func indexToGamePos(idx int, width int, height int) pixel.Vec {
 
 func run() {
 	// Create the window with OpenGL
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Pixel Tilemaps",
 		Bounds: pixel.R(0, 0, 800, 600),
 		VSync:  true,
 	}
 
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	panicIfErr(err)
 
 	// Initialize art assets (i.e. the tilemap)
@@ -148,7 +148,7 @@ func loadSprite(path string) (*pixel.Sprite, *pixel.PictureData) {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
 
 func panicIfErr(err error) {

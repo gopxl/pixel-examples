@@ -1,6 +1,6 @@
 # bouncing
 
-Bouncing particles using the [imdraw](https://godoc.org/github.com/gopxl/pixel/v2/imdraw) package.
+Bouncing particles using the [imdraw](https://godoc.org/github.com/gopxl/pixel/v2/ext/imdraw) package.
 
 Made by [Peter Hellberg](https://github.com/peterhellberg/) as part of his [pixel-experiments](https://github.com/peterhellberg/pixel-experiments)
 

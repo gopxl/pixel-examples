@@ -10,8 +10,8 @@ import (
 	_ "image/png"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 )
 
 func loadPicture(path string) (pixel.Picture, error) {
@@ -86,12 +86,12 @@ func run() {
 		panic(err)
 	}
 
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Lights",
 		Bounds: pixel.R(0, 0, 1024, 768),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -134,14 +134,14 @@ func run() {
 
 	speed := []float64{11.0 / 23, 13.0 / 23, 17.0 / 23, 19.0 / 23}
 
-	oneLight := pixelgl.NewCanvas(win.Bounds())
-	allLight := pixelgl.NewCanvas(win.Bounds())
+	oneLight := opengl.NewCanvas(win.Bounds())
+	allLight := opengl.NewCanvas(win.Bounds())
 
 	fps30 := time.Tick(time.Second / 30)
 
 	start := time.Now()
 	for !win.Closed() {
-		if win.Pressed(pixelgl.KeyW) {
+		if win.Pressed(opengl.KeyW) {
 			for i := range lights {
 				lights[i].dust += 0.05
 				if lights[i].dust > 1 {
@@ -149,7 +149,7 @@ func run() {
 				}
 			}
 		}
-		if win.Pressed(pixelgl.KeyS) {
+		if win.Pressed(opengl.KeyS) {
 			for i := range lights {
 				lights[i].dust -= 0.05
 				if lights[i].dust < 0 {
@@ -191,5 +191,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
