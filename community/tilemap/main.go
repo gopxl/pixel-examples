@@ -48,16 +48,16 @@ func gameloop(win *opengl.Window, tilemap *tmx.Map) {
 		// Camera movement
 		cam := pixel.IM.Scaled(camPos, camZoom).Moved(win.Bounds().Center().Sub(camPos))
 		win.SetMatrix(cam)
-		if win.Pressed(opengl.KeyLeft) {
+		if win.Pressed(pixel.KeyLeft) {
 			camPos.X -= camSpeed * dt
 		}
-		if win.Pressed(opengl.KeyRight) {
+		if win.Pressed(pixel.KeyRight) {
 			camPos.X += camSpeed * dt
 		}
-		if win.Pressed(opengl.KeyDown) {
+		if win.Pressed(pixel.KeyDown) {
 			camPos.Y -= camSpeed * dt
 		}
-		if win.Pressed(opengl.KeyUp) {
+		if win.Pressed(pixel.KeyUp) {
 			camPos.Y += camSpeed * dt
 		}
 		camZoom *= math.Pow(camZoomSpeed, win.MouseScroll().Y)

@@ -72,21 +72,21 @@ func run() {
 		cam := pixel.IM.Scaled(camPos, camZoom).Moved(win.Bounds().Center().Sub(camPos))
 		win.SetMatrix(cam)
 
-		if win.Pressed(opengl.MouseButtonLeft) {
+		if win.Pressed(pixel.MouseButtonLeft) {
 			tree := pixel.NewSprite(spritesheet, treesFrames[rand.Intn(len(treesFrames))])
 			mouse := cam.Unproject(win.MousePosition())
 			tree.Draw(batch, pixel.IM.Scaled(pixel.ZV, 4).Moved(mouse))
 		}
-		if win.Pressed(opengl.KeyLeft) {
+		if win.Pressed(pixel.KeyLeft) {
 			camPos.X -= camSpeed * dt
 		}
-		if win.Pressed(opengl.KeyRight) {
+		if win.Pressed(pixel.KeyRight) {
 			camPos.X += camSpeed * dt
 		}
-		if win.Pressed(opengl.KeyDown) {
+		if win.Pressed(pixel.KeyDown) {
 			camPos.Y -= camSpeed * dt
 		}
-		if win.Pressed(opengl.KeyUp) {
+		if win.Pressed(pixel.KeyUp) {
 			camPos.Y += camSpeed * dt
 		}
 		camZoom *= math.Pow(camZoomSpeed, win.MouseScroll().Y)

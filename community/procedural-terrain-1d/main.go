@@ -57,7 +57,7 @@ func run() {
 	drawTerrain(win, imd)
 
 	for !win.Closed() {
-		if win.JustPressed(opengl.KeySpace) {
+		if win.JustPressed(pixel.KeySpace) {
 			drawTerrain(win, imd)
 		}
 		win.Update()

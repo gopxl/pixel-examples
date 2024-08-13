@@ -42,13 +42,13 @@ func run() {
 		imd.Clear()
 
 		// When mouse left-click, move the rectangle so its' center is at the mouse position
-		if win.JustPressed(opengl.MouseButtonLeft) {
+		if win.JustPressed(pixel.MouseButtonLeft) {
 			rectToMouse := r.Center().To(win.MousePosition())
 			r = r.Moved(rectToMouse)
 		}
 
 		// When mouse right-click, set either the beginning or end of the line.
-		if win.JustPressed(opengl.MouseButtonRight) {
+		if win.JustPressed(pixel.MouseButtonRight) {
 			if clickLine == clickLineA {
 				// Set the beginning of the line to the mouse position.
 				// To make it clearer to the user, set the end position 1 pixel (in each direction) away from the first

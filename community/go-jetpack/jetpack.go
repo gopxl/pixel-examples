@@ -121,14 +121,14 @@ func run() {
 		win.Clear(colornames.Green)
 
 		// Jetpack - Controls
-		jetpackOn = win.Pressed(opengl.KeyUp) || win.Pressed(opengl.KeyW)
+		jetpackOn = win.Pressed(pixel.KeyUp) || win.Pressed(pixel.KeyW)
 
-		if win.Pressed(opengl.KeyRight) || win.Pressed(opengl.KeyD) {
+		if win.Pressed(pixel.KeyRight) || win.Pressed(pixel.KeyD) {
 			jetpackOn = true
 			flipped = -1
 			radians -= tilt
 			velX += tilt * 30
-		} else if win.Pressed(opengl.KeyLeft) || win.Pressed(opengl.KeyA) {
+		} else if win.Pressed(pixel.KeyLeft) || win.Pressed(pixel.KeyA) {
 			jetpackOn = true
 			flipped = 1
 			radians += tilt

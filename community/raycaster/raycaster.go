@@ -373,7 +373,7 @@ func run() {
 	mapRot := -1.6683362599999894
 
 	for !win.Closed() {
-		if win.JustPressed(opengl.KeyEscape) || win.JustPressed(opengl.KeyQ) {
+		if win.JustPressed(pixel.KeyEscape) || win.JustPressed(pixel.KeyQ) {
 			return
 		}
 
@@ -384,67 +384,67 @@ func run() {
 
 		as = getActionSquare()
 
-		if win.Pressed(opengl.KeyUp) || win.Pressed(opengl.KeyW) {
+		if win.Pressed(pixel.KeyUp) || win.Pressed(pixel.KeyW) {
 			moveForward(3.5 * dt)
 		}
 
-		if win.Pressed(opengl.KeyA) {
+		if win.Pressed(pixel.KeyA) {
 			moveLeft(3.5 * dt)
 		}
 
-		if win.Pressed(opengl.KeyDown) || win.Pressed(opengl.KeyS) {
+		if win.Pressed(pixel.KeyDown) || win.Pressed(pixel.KeyS) {
 			moveBackwards(3.5 * dt)
 		}
 
-		if win.Pressed(opengl.KeyD) {
+		if win.Pressed(pixel.KeyD) {
 			moveRight(3.5 * dt)
 		}
 
-		if win.Pressed(opengl.KeyRight) {
+		if win.Pressed(pixel.KeyRight) {
 			turnRight(1.2 * dt)
 		}
 
-		if win.Pressed(opengl.KeyLeft) {
+		if win.Pressed(pixel.KeyLeft) {
 			turnLeft(1.2 * dt)
 		}
 
-		if win.JustPressed(opengl.KeyM) {
+		if win.JustPressed(pixel.KeyM) {
 			showMap = !showMap
 		}
 
-		if win.JustPressed(opengl.Key1) {
+		if win.JustPressed(pixel.Key1) {
 			as.set(1)
 		}
 
-		if win.JustPressed(opengl.Key2) {
+		if win.JustPressed(pixel.Key2) {
 			as.set(2)
 		}
 
-		if win.JustPressed(opengl.Key3) {
+		if win.JustPressed(pixel.Key3) {
 			as.set(3)
 		}
 
-		if win.JustPressed(opengl.Key4) {
+		if win.JustPressed(pixel.Key4) {
 			as.set(4)
 		}
 
-		if win.JustPressed(opengl.Key5) {
+		if win.JustPressed(pixel.Key5) {
 			as.set(5)
 		}
 
-		if win.JustPressed(opengl.Key6) {
+		if win.JustPressed(pixel.Key6) {
 			as.set(6)
 		}
 
-		if win.JustPressed(opengl.Key7) {
+		if win.JustPressed(pixel.Key7) {
 			as.set(7)
 		}
 
-		if win.JustPressed(opengl.Key0) {
+		if win.JustPressed(pixel.Key0) {
 			as.set(0)
 		}
 
-		if win.JustPressed(opengl.KeySpace) {
+		if win.JustPressed(pixel.KeySpace) {
 			as.toggle(3)
 		}
 

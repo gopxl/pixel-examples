@@ -74,11 +74,11 @@ func run() {
 		}
 		staticText.Draw(win, pixel.IM)
 
-		if win.JustPressed(opengl.KeyEscape) {
+		if win.JustPressed(pixel.KeyEscape) {
 			win.SetClosed(true)
 		}
 
-		if win.JustPressed(opengl.KeyW) {
+		if win.JustPressed(pixel.KeyW) {
 			if isFullScreen {
 				// Switch to windowed and backup the correct monitor.
 				win.SetMonitor(nil)

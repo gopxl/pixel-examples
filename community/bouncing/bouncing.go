@@ -49,15 +49,15 @@ func run() {
 	}()
 
 	for !win.Closed() {
-		win.SetClosed(win.JustPressed(opengl.KeyEscape) || win.JustPressed(opengl.KeyQ))
+		win.SetClosed(win.JustPressed(pixel.KeyEscape) || win.JustPressed(pixel.KeyQ))
 
-		if win.JustPressed(opengl.KeySpace) {
+		if win.JustPressed(pixel.KeySpace) {
 			for _, ball := range balls {
 				ball.color = ball.palette.next()
 			}
 		}
 
-		if win.JustPressed(opengl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) {
 			for _, ball := range balls {
 				ball.pos = center()
 				ball.vel = randomVelocity()

@@ -231,7 +231,7 @@ func run() {
 	gridIMDraw := imdraw.New(nil)
 
 	for !win.Closed() {
-		if win.JustReleased(opengl.KeyR) {
+		if win.JustReleased(pixel.KeyR) {
 			fmt.Println("R pressed")
 			grid, backTrackStack, currentCell = setupMaze(cols, rows)
 		}

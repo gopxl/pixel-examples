@@ -141,7 +141,7 @@ func run() {
 
 	start := time.Now()
 	for !win.Closed() {
-		if win.Pressed(opengl.KeyW) {
+		if win.Pressed(pixel.KeyW) {
 			for i := range lights {
 				lights[i].dust += 0.05
 				if lights[i].dust > 1 {
@@ -149,7 +149,7 @@ func run() {
 				}
 			}
 		}
-		if win.Pressed(opengl.KeyS) {
+		if win.Pressed(pixel.KeyS) {
 			for i := range lights {
 				lights[i].dust -= 0.05
 				if lights[i].dust < 0 {

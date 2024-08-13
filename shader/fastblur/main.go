@@ -83,19 +83,19 @@ func run() {
 		uMouseVar[0] = float32(win.MousePosition().X)
 		uMouseVar[1] = float32(win.MousePosition().Y)
 
-		if win.Pressed(opengl.MouseButton1) {
+		if win.Pressed(pixel.MouseButton1) {
 			uMouseVar[2] = 1.0
 		} else {
 			uMouseVar[2] = 0.0
 		}
-		if win.Pressed(opengl.MouseButton2) {
+		if win.Pressed(pixel.MouseButton2) {
 			uMouseVar[3] = 1.0
 		} else {
 			uMouseVar[3] = 0.0
 		}
 
-		win.SetClosed(win.JustPressed(opengl.KeyEscape) || win.JustPressed(opengl.KeyQ))
-		if win.JustPressed(opengl.KeySpace) {
+		win.SetClosed(win.JustPressed(pixel.KeyEscape) || win.JustPressed(pixel.KeyQ))
+		if win.JustPressed(pixel.KeySpace) {
 			a1, a2 = a1a2DefaultValues()
 		}
 

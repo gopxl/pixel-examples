@@ -114,7 +114,7 @@ func run() {
 		}
 
 		// select a box
-		if win.JustPressed(opengl.MouseButtonLeft) {
+		if win.JustPressed(pixel.MouseButtonLeft) {
 			if input {
 				imd.Clear()
 			}
@@ -132,35 +132,35 @@ func run() {
 		}
 		// act on user input
 		if input && !mask[x][y] {
-			if win.JustPressed(opengl.Key1) || win.JustPressed(opengl.KeyKP1) {
+			if win.JustPressed(pixel.Key1) || win.JustPressed(pixel.KeyKP1) {
 				updateBoard(1, imd)
 			}
-			if win.JustPressed(opengl.Key2) || win.JustPressed(opengl.KeyKP2) {
+			if win.JustPressed(pixel.Key2) || win.JustPressed(pixel.KeyKP2) {
 				updateBoard(2, imd)
 			}
-			if win.JustPressed(opengl.Key3) || win.JustPressed(opengl.KeyKP3) {
+			if win.JustPressed(pixel.Key3) || win.JustPressed(pixel.KeyKP3) {
 				updateBoard(3, imd)
 			}
-			if win.JustPressed(opengl.Key4) || win.JustPressed(opengl.KeyKP4) {
+			if win.JustPressed(pixel.Key4) || win.JustPressed(pixel.KeyKP4) {
 				updateBoard(4, imd)
 			}
-			if win.JustPressed(opengl.Key5) || win.JustPressed(opengl.KeyKP5) {
+			if win.JustPressed(pixel.Key5) || win.JustPressed(pixel.KeyKP5) {
 				updateBoard(5, imd)
 			}
-			if win.JustPressed(opengl.Key6) || win.JustPressed(opengl.KeyKP6) {
+			if win.JustPressed(pixel.Key6) || win.JustPressed(pixel.KeyKP6) {
 				updateBoard(6, imd)
 			}
-			if win.JustPressed(opengl.Key7) || win.JustPressed(opengl.KeyKP7) {
+			if win.JustPressed(pixel.Key7) || win.JustPressed(pixel.KeyKP7) {
 				updateBoard(7, imd)
 			}
-			if win.JustPressed(opengl.Key8) || win.JustPressed(opengl.KeyKP8) {
+			if win.JustPressed(pixel.Key8) || win.JustPressed(pixel.KeyKP8) {
 				updateBoard(8, imd)
 			}
-			if win.JustPressed(opengl.Key9) || win.JustPressed(opengl.KeyKP9) {
+			if win.JustPressed(pixel.Key9) || win.JustPressed(pixel.KeyKP9) {
 				updateBoard(9, imd)
 			}
-			if win.JustPressed(opengl.Key0) || win.JustPressed(opengl.KeyKP0) ||
-				win.JustPressed(opengl.KeyBackspace) || win.JustPressed(opengl.KeySpace) {
+			if win.JustPressed(pixel.Key0) || win.JustPressed(pixel.KeyKP0) ||
+				win.JustPressed(pixel.KeyBackspace) || win.JustPressed(pixel.KeySpace) {
 				updateBoard(0, imd)
 			}
 		}

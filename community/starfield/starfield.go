@@ -93,19 +93,19 @@ func run() {
 	last := time.Now()
 
 	for !win.Closed() {
-		win.SetClosed(win.JustPressed(opengl.KeyEscape) || win.JustPressed(opengl.KeyQ))
+		win.SetClosed(win.JustPressed(pixel.KeyEscape) || win.JustPressed(pixel.KeyQ))
 
-		if win.Pressed(opengl.KeyUp) {
+		if win.Pressed(pixel.KeyUp) {
 			speed += 10
 		}
 
-		if win.Pressed(opengl.KeyDown) {
+		if win.Pressed(pixel.KeyDown) {
 			if speed > 10 {
 				speed -= 10
 			}
 		}
 
-		if win.Pressed(opengl.KeySpace) {
+		if win.Pressed(pixel.KeySpace) {
 			speed = 100
 		}
 

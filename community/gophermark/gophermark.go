@@ -95,11 +95,11 @@ func run() {
 	}
 
 	last := time.Now()
-	for !win.Closed() && !win.JustPressed(opengl.KeyEscape) {
+	for !win.Closed() && !win.JustPressed(pixel.KeyEscape) {
 		dt := time.Since(last).Seconds()
 		last = time.Now()
 
-		if win.Pressed(opengl.MouseButtonLeft) {
+		if win.Pressed(pixel.MouseButtonLeft) {
 			mouse := win.MousePosition()
 			for i := 0; i < 10; i++ {
 				gophers = append(gophers, newGopher(mouse))

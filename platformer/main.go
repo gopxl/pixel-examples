@@ -339,25 +339,25 @@ func run() {
 		canvas.SetMatrix(cam)
 
 		// slow motion with tab
-		if win.Pressed(opengl.KeyTab) {
+		if win.Pressed(pixel.KeyTab) {
 			dt /= 8
 		}
 
 		// restart the level on pressing enter
-		if win.JustPressed(opengl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) {
 			phys.rect = phys.rect.Moved(phys.rect.Center().Scaled(-1))
 			phys.vel = pixel.ZV
 		}
 
 		// control the gopher with keys
 		ctrl := pixel.ZV
-		if win.Pressed(opengl.KeyLeft) {
+		if win.Pressed(pixel.KeyLeft) {
 			ctrl.X--
 		}
-		if win.Pressed(opengl.KeyRight) {
+		if win.Pressed(pixel.KeyRight) {
 			ctrl.X++
 		}
-		if win.JustPressed(opengl.KeyUp) {
+		if win.JustPressed(pixel.KeyUp) {
 			ctrl.Y = 1
 		}
 

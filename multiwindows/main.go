@@ -5,6 +5,7 @@ import (
 
 	pixel "github.com/gopxl/pixel/v2"
 	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/gameloop"
 	"github.com/gopxl/pixel/v2/ext/text"
 )
 
@@ -74,7 +75,7 @@ func (w *EasyWindow2) Draw() error {
 	return nil
 }
 
-var wm *opengl.WindowManager = opengl.NewWindowManager()
+var wm *gameloop.WindowManager = gameloop.NewWindowManager()
 
 func run() {
 	w1, err := opengl.NewWindow(opengl.WindowConfig{
@@ -95,7 +96,7 @@ func run() {
 		panic(err)
 	}
 
-	wm.InsertWindows([]opengl.EasyWindow{
+	wm.InsertWindows([]gameloop.EasyWindow{
 		&EasyWindow1{win: w1},
 		&EasyWindow2{win: w2},
 	})

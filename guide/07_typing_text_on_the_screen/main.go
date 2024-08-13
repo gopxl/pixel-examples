@@ -61,7 +61,7 @@ func run() {
 
 	for !win.Closed() {
 		txt.WriteString(win.Typed())
-		if win.JustPressed(opengl.KeyEnter) || win.Repeated(opengl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) || win.Repeated(pixel.KeyEnter) {
 			txt.WriteRune('\n')
 		}
 

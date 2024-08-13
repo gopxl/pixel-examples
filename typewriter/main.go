@@ -284,14 +284,14 @@ func run() {
 		for _, r := range win.Typed() {
 			go typeRune(tw, r)
 		}
-		if win.JustPressed(opengl.KeyTab) || win.Repeated(opengl.KeyTab) {
+		if win.JustPressed(pixel.KeyTab) || win.Repeated(pixel.KeyTab) {
 			go typeRune(tw, '\t')
 		}
-		if win.JustPressed(opengl.KeyEnter) || win.Repeated(opengl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) || win.Repeated(pixel.KeyEnter) {
 			go typeRune(tw, '\n')
 			go scroll(tw, 20, 6400)
 		}
-		if win.JustPressed(opengl.KeyBackspace) || win.Repeated(opengl.KeyBackspace) {
+		if win.JustPressed(pixel.KeyBackspace) || win.Repeated(pixel.KeyBackspace) {
 			go back(tw)
 		}
 

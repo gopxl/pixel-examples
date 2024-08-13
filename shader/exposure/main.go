@@ -80,16 +80,16 @@ func run() {
 		uTimeVar = float32(time.Since(start).Seconds())
 
 		switch {
-		case win.Pressed(opengl.KeyLeft):
+		case win.Pressed(pixel.KeyLeft):
 			uAmountVar -= 0.001
 			win.SetTitle(fmt.Sprint(uAmountVar))
-		case win.Pressed(opengl.KeyRight):
+		case win.Pressed(pixel.KeyRight):
 			uAmountVar += 0.001
 			win.SetTitle(fmt.Sprint(uAmountVar))
 		}
 
-		win.SetClosed(win.JustPressed(opengl.KeyEscape) || win.JustPressed(opengl.KeyQ))
-		if win.JustPressed(opengl.KeySpace) {
+		win.SetClosed(win.JustPressed(pixel.KeyEscape) || win.JustPressed(pixel.KeyQ))
+		if win.JustPressed(pixel.KeySpace) {
 			a1, a2 = a1a2DefaultValues()
 		}
 

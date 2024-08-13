@@ -26,10 +26,10 @@ func gameloop(win *opengl.Window) {
 		win.Clear(pixel.RGB(0, 0, 0))
 		gopherimg.Draw(win, pixel.IM.Moved(win.Bounds().Center()))
 		uTime = float32(time.Since(start).Seconds())
-		if win.Pressed(opengl.KeyRight) {
+		if win.Pressed(pixel.KeyRight) {
 			uSpeed += 0.1
 		}
-		if win.Pressed(opengl.KeyLeft) {
+		if win.Pressed(pixel.KeyLeft) {
 			uSpeed -= 0.1
 		}
 		win.Update()
