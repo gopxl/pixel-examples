@@ -4,8 +4,8 @@ import (
 	"image/color"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 )
 
 // These hold the state of whether we're placing the first or second point of the line.
@@ -24,13 +24,13 @@ var (
 )
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Line collision",
 		Bounds: winBounds,
 		VSync:  true,
 	}
 
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -42,13 +42,13 @@ func run() {
 		imd.Clear()
 
 		// When mouse left-click, move the rectangle so its' center is at the mouse position
-		if win.JustPressed(pixelgl.MouseButtonLeft) {
+		if win.JustPressed(pixel.MouseButtonLeft) {
 			rectToMouse := r.Center().To(win.MousePosition())
 			r = r.Moved(rectToMouse)
 		}
 
 		// When mouse right-click, set either the beginning or end of the line.
-		if win.JustPressed(pixelgl.MouseButtonRight) {
+		if win.JustPressed(pixel.MouseButtonRight) {
 			if clickLine == clickLineA {
 				// Set the beginning of the line to the mouse position.
 				// To make it clearer to the user, set the end position 1 pixel (in each direction) away from the first
@@ -85,5 +85,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

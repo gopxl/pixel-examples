@@ -10,8 +10,8 @@ import (
 
 	perlin "github.com/aquilax/go-perlin"
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 	"golang.org/x/image/colornames"
 )
 
@@ -35,16 +35,16 @@ func init() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Procedural terrain 1D",
 		Bounds: pixel.R(0, 0, width, height),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -57,7 +57,7 @@ func run() {
 	drawTerrain(win, imd)
 
 	for !win.Closed() {
-		if win.JustPressed(pixelgl.KeySpace) {
+		if win.JustPressed(pixel.KeySpace) {
 			drawTerrain(win, imd)
 		}
 		win.Update()
@@ -77,7 +77,7 @@ func loadPicture(path string) (pixel.Picture, error) {
 	return pixel.PictureDataFromImage(img), nil
 }
 
-func drawTerrain(win *pixelgl.Window, imd *imdraw.IMDraw) {
+func drawTerrain(win *opengl.Window, imd *imdraw.IMDraw) {
 	var seed = rand.Int63n(maximumSeedValue)
 	p := perlin.NewPerlin(alpha, beta, n, seed)
 

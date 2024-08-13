@@ -14,8 +14,8 @@ import (
 	_ "image/png"
 
 	pixel "github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 	"github.com/pkg/errors"
 	"golang.org/x/image/colornames"
 )
@@ -273,12 +273,12 @@ func run() {
 		panic(err)
 	}
 
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Platformer",
 		Bounds: pixel.R(0, 0, 1024, 768),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -322,7 +322,7 @@ func run() {
 		step:   1.0 / 7,
 	}
 
-	canvas := pixelgl.NewCanvas(pixel.R(-160/2, -120/2, 160/2, 120/2))
+	canvas := opengl.NewCanvas(pixel.R(-160/2, -120/2, 160/2, 120/2))
 	imd := imdraw.New(sheet)
 	imd.Precision = 32
 
@@ -339,25 +339,25 @@ func run() {
 		canvas.SetMatrix(cam)
 
 		// slow motion with tab
-		if win.Pressed(pixelgl.KeyTab) {
+		if win.Pressed(pixel.KeyTab) {
 			dt /= 8
 		}
 
 		// restart the level on pressing enter
-		if win.JustPressed(pixelgl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) {
 			phys.rect = phys.rect.Moved(phys.rect.Center().Scaled(-1))
 			phys.vel = pixel.ZV
 		}
 
 		// control the gopher with keys
 		ctrl := pixel.ZV
-		if win.Pressed(pixelgl.KeyLeft) {
+		if win.Pressed(pixel.KeyLeft) {
 			ctrl.X--
 		}
-		if win.Pressed(pixelgl.KeyRight) {
+		if win.Pressed(pixel.KeyRight) {
 			ctrl.X++
 		}
-		if win.JustPressed(pixelgl.KeyUp) {
+		if win.JustPressed(pixel.KeyUp) {
 			ctrl.Y = 1
 		}
 
@@ -390,5 +390,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

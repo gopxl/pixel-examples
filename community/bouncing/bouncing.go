@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 )
 
 var (
@@ -23,7 +23,7 @@ var (
 )
 
 func run() {
-	win, err := pixelgl.NewWindow(pixelgl.WindowConfig{
+	win, err := opengl.NewWindow(opengl.WindowConfig{
 		Bounds:      pixel.R(0, 0, w, h),
 		VSync:       true,
 		Undecorated: true,
@@ -49,15 +49,15 @@ func run() {
 	}()
 
 	for !win.Closed() {
-		win.SetClosed(win.JustPressed(pixelgl.KeyEscape) || win.JustPressed(pixelgl.KeyQ))
+		win.SetClosed(win.JustPressed(pixel.KeyEscape) || win.JustPressed(pixel.KeyQ))
 
-		if win.JustPressed(pixelgl.KeySpace) {
+		if win.JustPressed(pixel.KeySpace) {
 			for _, ball := range balls {
 				ball.color = ball.palette.next()
 			}
 		}
 
-		if win.JustPressed(pixelgl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) {
 			for _, ball := range balls {
 				ball.pos = center()
 				ball.vel = randomVelocity()
@@ -117,7 +117,7 @@ func main() {
 		}
 	}()
 
-	pixelgl.Run(run)
+	opengl.Run(run)
 }
 
 func newParticleAt(pos, vel pixel.Vec) *particle {

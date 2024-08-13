@@ -8,10 +8,10 @@ import (
 
 	_ "image/png"
 
-	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
 	"github.com/golang/freetype/truetype"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/colornames"
 )
 
@@ -69,12 +69,12 @@ func loadTTF(path string, size float64, origin pixel.Vec) *text.Text {
 
 func run() {
 	// Set up window configs
-	cfg := pixelgl.WindowConfig{ // Default: 1024 x 768
+	cfg := opengl.WindowConfig{ // Default: 1024 x 768
 		Title:  "Golang Jetpack!",
 		Bounds: pixel.R(0, 0, 1024, 768),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -121,14 +121,14 @@ func run() {
 		win.Clear(colornames.Green)
 
 		// Jetpack - Controls
-		jetpackOn = win.Pressed(pixelgl.KeyUp) || win.Pressed(pixelgl.KeyW)
+		jetpackOn = win.Pressed(pixel.KeyUp) || win.Pressed(pixel.KeyW)
 
-		if win.Pressed(pixelgl.KeyRight) || win.Pressed(pixelgl.KeyD) {
+		if win.Pressed(pixel.KeyRight) || win.Pressed(pixel.KeyD) {
 			jetpackOn = true
 			flipped = -1
 			radians -= tilt
 			velX += tilt * 30
-		} else if win.Pressed(pixelgl.KeyLeft) || win.Pressed(pixelgl.KeyA) {
+		} else if win.Pressed(pixel.KeyLeft) || win.Pressed(pixel.KeyA) {
 			jetpackOn = true
 			flipped = 1
 			radians += tilt
@@ -204,5 +204,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

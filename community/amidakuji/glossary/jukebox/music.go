@@ -9,9 +9,9 @@ import (
 
 	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
 
-	"github.com/gopxl/beep"
-	"github.com/gopxl/beep/speaker"
-	"github.com/gopxl/beep/vorbis"
+	"github.com/gopxl/beep/v2"
+	"github.com/gopxl/beep/v2/speaker"
+	"github.com/gopxl/beep/v2/vorbis"
 )
 
 // -------------------------------------------------------------------------

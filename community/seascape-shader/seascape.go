@@ -6,19 +6,19 @@ import (
 	"github.com/go-gl/mathgl/mgl32"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 	"golang.org/x/image/colornames"
 )
 
 func run() {
 	// Set up window configs
-	cfg := pixelgl.WindowConfig{ // Default: 1024 x 768
+	cfg := opengl.WindowConfig{ // Default: 1024 x 768
 		Title:  "Golang GLSL",
 		Bounds: pixel.R(0, 0, float64(width), float64(height)),
 		VSync:  true,
 	}
 
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -74,5 +74,5 @@ func run() {
 func main() {
 	parseFlags()
 
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

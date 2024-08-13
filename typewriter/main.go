@@ -8,11 +8,11 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
 	"github.com/golang/freetype/truetype"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/colornames"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/gofont/gobold"
@@ -236,12 +236,12 @@ func (dl *dotlight) Draw(t pixel.Target, m pixel.Matrix) {
 func run() {
 	rand.Seed(time.Now().UnixNano())
 
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:     "Typewriter",
 		Bounds:    pixel.R(0, 0, 1024, 768),
 		Resizable: true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -284,14 +284,14 @@ func run() {
 		for _, r := range win.Typed() {
 			go typeRune(tw, r)
 		}
-		if win.JustPressed(pixelgl.KeyTab) || win.Repeated(pixelgl.KeyTab) {
+		if win.JustPressed(pixel.KeyTab) || win.Repeated(pixel.KeyTab) {
 			go typeRune(tw, '\t')
 		}
-		if win.JustPressed(pixelgl.KeyEnter) || win.Repeated(pixelgl.KeyEnter) {
+		if win.JustPressed(pixel.KeyEnter) || win.Repeated(pixel.KeyEnter) {
 			go typeRune(tw, '\n')
 			go scroll(tw, 20, 6400)
 		}
-		if win.JustPressed(pixelgl.KeyBackspace) || win.Repeated(pixelgl.KeyBackspace) {
+		if win.JustPressed(pixel.KeyBackspace) || win.Repeated(pixel.KeyBackspace) {
 			go back(tw)
 		}
 
@@ -313,5 +313,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

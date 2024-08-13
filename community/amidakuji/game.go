@@ -15,13 +15,13 @@ import (
 	"time"
 	"unsafe"
 
+	glfw "github.com/go-gl/glfw/v3.2/glfw"
 	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
 	"github.com/gopxl/pixel-examples/community/amidakuji/glossary/jukebox"
-	glfw "github.com/go-gl/glfw/v3.2/glfw"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"github.com/sqweek/dialog"
 	"golang.org/x/image/colornames"
 )
@@ -49,7 +49,7 @@ type Updater interface {
 // Also it manages and draws everything about...
 type game struct {
 	// something system, somthing runtime
-	window *pixelgl.Window // lazy init
+	window *opengl.Window // lazy init
 	bg     pixel.RGBA
 	camera *gg.Camera // lazy init
 	fpsw   *gg.FPSWatch
@@ -429,7 +429,7 @@ func (g *game) Resume() {
 
 func (g *game) SetFullScreenMode(on bool) {
 	if on {
-		monitor := pixelgl.PrimaryMonitor()
+		monitor := opengl.PrimaryMonitor()
 		width, height := monitor.Size()
 		// log.Println(monitor.VideoModes()) //
 		g.window.SetMonitor(monitor)
@@ -447,7 +447,7 @@ func (g *game) SetFullScreenMode(on bool) {
 // Read only methods
 
 // WindowDeep is a hacky way to access a window in deep.
-// It returns (window *glfw.Window) which is an unexported member inside a (*pixelgl.Window).
+// It returns (window *glfw.Window) which is an unexported member inside a (*opengl.Window).
 // Read only argument game ignores the pass lock by value warning.
 func (g game) WindowDeep() (baseWindow *glfw.Window) {
 	return *(**glfw.Window)(unsafe.Pointer(reflect.Indirect(reflect.ValueOf(g.window)).FieldByName("window").UnsafeAddr()))
@@ -470,7 +470,7 @@ func (g game) BridgesCount() (sum int) {
 
 // Run the game window and its event loop on main thread.
 func (g *game) Run() {
-	pixelgl.Run(func() {
+	opengl.Run(func() {
 		g.RunLazyInit()
 		g.RunEventLoop()
 	})
@@ -478,7 +478,7 @@ func (g *game) Run() {
 
 func (g *game) RunLazyInit() {
 	// This window will show up as soon as it is created.
-	win, err := pixelgl.NewWindow(pixelgl.WindowConfig{
+	win, err := opengl.NewWindow(opengl.WindowConfig{
 		Title:     title + "  (" + version + ")",
 		Icon:      nil,
 		Bounds:    pixel.R(0, 0, g.winWidth, g.winHeight),
@@ -492,8 +492,8 @@ func (g *game) RunLazyInit() {
 	}
 	win.SetSmooth(true)
 
-	MoveWindowToCenterOfPrimaryMonitor := func(win *pixelgl.Window) {
-		vmodes := pixelgl.PrimaryMonitor().VideoModes()
+	MoveWindowToCenterOfPrimaryMonitor := func(win *opengl.Window) {
+		vmodes := opengl.PrimaryMonitor().VideoModes()
 		vmodesLast := vmodes[len(vmodes)-1]
 		biggestResolution := pixel.R(0, 0, float64(vmodesLast.Width), float64(vmodesLast.Height))
 		win.SetPos(biggestResolution.Center().Sub(win.Bounds().Center()))
@@ -558,15 +558,15 @@ func (g *game) HandlingEvents(dt float64) {
 	// Notice that all function calls as go routine are non-blocking, but the others will block the main thread.
 
 	// system
-	if g.window.JustReleased(pixelgl.KeyEscape) {
+	if g.window.JustReleased(pixel.KeyEscape) {
 		g.window.SetClosed(true)
 	}
-	if g.window.JustReleased(pixelgl.KeySpace) {
+	if g.window.JustReleased(pixel.KeySpace) {
 		g.Pause()
 		dialog.Message("%s", "Pause").Title("PPAP").Info()
 		g.Resume()
 	}
-	if g.window.JustReleased(pixelgl.KeyTab) {
+	if g.window.JustReleased(pixel.KeyTab) {
 		if g.window.Monitor() == nil {
 			g.SetFullScreenMode(true)
 		} else {
@@ -575,12 +575,12 @@ func (g *game) HandlingEvents(dt float64) {
 	}
 
 	// scalpel mode
-	if g.window.JustReleased(pixelgl.MouseButtonRight) {
+	if g.window.JustReleased(pixel.MouseButtonRight) {
 		go func() {
 			g.isScalpelMode = !g.isScalpelMode
 		}()
 	}
-	if g.window.JustReleased(pixelgl.MouseButtonLeft) {
+	if g.window.JustReleased(pixel.MouseButtonLeft) {
 		// ---------------------------------------------------
 		if !jukebox.IsPlaying() {
 			jukebox.Play()
@@ -613,18 +613,18 @@ func (g *game) HandlingEvents(dt float64) {
 	}
 
 	// game ctrl
-	if g.window.JustReleased(pixelgl.Key1) { // shuffle
+	if g.window.JustReleased(pixel.Key1) { // shuffle
 		go func() {
 			g.Shuffle(10, 750)
 		}()
 	}
-	if g.window.JustReleased(pixelgl.Key2) { // find path slow
+	if g.window.JustReleased(pixel.Key2) { // find path slow
 		go func() {
 			g.ResetPaths()
 			g.AnimatePaths(g.AnimatePath)
 		}()
 	}
-	if g.window.JustReleased(pixelgl.Key3) { // find path fast
+	if g.window.JustReleased(pixel.Key3) { // find path fast
 		go func() {
 			g.ResetPaths()
 			g.AnimatePaths(func(participant int) {
@@ -634,27 +634,27 @@ func (g *game) HandlingEvents(dt float64) {
 	}
 
 	// camera
-	if g.window.JustReleased(pixelgl.KeyEnter) {
+	if g.window.JustReleased(pixel.KeyEnter) {
 		go func() {
 			g.camera.Rotate(-90)
 		}()
 	}
-	if g.window.Pressed(pixelgl.KeyRight) {
+	if g.window.Pressed(pixel.KeyRight) {
 		go func(dt float64) { // This camera will go diagonal while the case is in middle of rotating the camera.
 			g.camera.Move(pixel.V(1000*dt, 0).Rotated(-g.camera.Angle()))
 		}(dt)
 	}
-	if g.window.Pressed(pixelgl.KeyLeft) {
+	if g.window.Pressed(pixel.KeyLeft) {
 		go func(dt float64) {
 			g.camera.Move(pixel.V(-1000*dt, 0).Rotated(-g.camera.Angle()))
 		}(dt)
 	}
-	if g.window.Pressed(pixelgl.KeyUp) {
+	if g.window.Pressed(pixel.KeyUp) {
 		go func(dt float64) {
 			g.camera.Move(pixel.V(0, 1000*dt).Rotated(-g.camera.Angle()))
 		}(dt)
 	}
-	if g.window.Pressed(pixelgl.KeyDown) {
+	if g.window.Pressed(pixel.KeyDown) {
 		go func(dt float64) {
 			g.camera.Move(pixel.V(0, -1000*dt).Rotated(-g.camera.Angle()))
 		}(dt)

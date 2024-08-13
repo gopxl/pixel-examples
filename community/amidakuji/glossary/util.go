@@ -13,9 +13,9 @@ import (
 	_ "image/gif"
 	_ "image/png"
 
-	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/text"
 	"github.com/golang/freetype/truetype"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/basicfont"
 )
@@ -30,6 +30,19 @@ func init() {
 // Atlas is a set of generated textures for glyphs in a specific font.
 func AtlasASCII() *text.Atlas {
 	return atlasASCII
+}
+
+func Asset(name string) ([]byte, error) {
+	return ioutil.ReadFile(name)
+}
+
+func AssetDir(name string) ([]string, error) {
+	f, err := os.Open(name)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	return f.Readdirnames(-1)
 }
 
 // NewAtlas newly loads and prepares a set of images of characters or symbols to be drawn.

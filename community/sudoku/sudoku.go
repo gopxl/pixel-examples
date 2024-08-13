@@ -7,11 +7,11 @@ import (
 
 	_ "image/png"
 
-	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
 	"github.com/golang/freetype/truetype"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/colornames"
 	"golang.org/x/image/font/gofont/goregular"
 )
@@ -69,12 +69,12 @@ func updateBoard(value int, imd *imdraw.IMDraw) {
 
 func run() {
 	// initialize window
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Sudoku",
 		Bounds: pixel.R(0, 0, width, width),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -114,7 +114,7 @@ func run() {
 		}
 
 		// select a box
-		if win.JustPressed(pixelgl.MouseButtonLeft) {
+		if win.JustPressed(pixel.MouseButtonLeft) {
 			if input {
 				imd.Clear()
 			}
@@ -132,35 +132,35 @@ func run() {
 		}
 		// act on user input
 		if input && !mask[x][y] {
-			if win.JustPressed(pixelgl.Key1) || win.JustPressed(pixelgl.KeyKP1) {
+			if win.JustPressed(pixel.Key1) || win.JustPressed(pixel.KeyKP1) {
 				updateBoard(1, imd)
 			}
-			if win.JustPressed(pixelgl.Key2) || win.JustPressed(pixelgl.KeyKP2) {
+			if win.JustPressed(pixel.Key2) || win.JustPressed(pixel.KeyKP2) {
 				updateBoard(2, imd)
 			}
-			if win.JustPressed(pixelgl.Key3) || win.JustPressed(pixelgl.KeyKP3) {
+			if win.JustPressed(pixel.Key3) || win.JustPressed(pixel.KeyKP3) {
 				updateBoard(3, imd)
 			}
-			if win.JustPressed(pixelgl.Key4) || win.JustPressed(pixelgl.KeyKP4) {
+			if win.JustPressed(pixel.Key4) || win.JustPressed(pixel.KeyKP4) {
 				updateBoard(4, imd)
 			}
-			if win.JustPressed(pixelgl.Key5) || win.JustPressed(pixelgl.KeyKP5) {
+			if win.JustPressed(pixel.Key5) || win.JustPressed(pixel.KeyKP5) {
 				updateBoard(5, imd)
 			}
-			if win.JustPressed(pixelgl.Key6) || win.JustPressed(pixelgl.KeyKP6) {
+			if win.JustPressed(pixel.Key6) || win.JustPressed(pixel.KeyKP6) {
 				updateBoard(6, imd)
 			}
-			if win.JustPressed(pixelgl.Key7) || win.JustPressed(pixelgl.KeyKP7) {
+			if win.JustPressed(pixel.Key7) || win.JustPressed(pixel.KeyKP7) {
 				updateBoard(7, imd)
 			}
-			if win.JustPressed(pixelgl.Key8) || win.JustPressed(pixelgl.KeyKP8) {
+			if win.JustPressed(pixel.Key8) || win.JustPressed(pixel.KeyKP8) {
 				updateBoard(8, imd)
 			}
-			if win.JustPressed(pixelgl.Key9) || win.JustPressed(pixelgl.KeyKP9) {
+			if win.JustPressed(pixel.Key9) || win.JustPressed(pixel.KeyKP9) {
 				updateBoard(9, imd)
 			}
-			if win.JustPressed(pixelgl.Key0) || win.JustPressed(pixelgl.KeyKP0) ||
-				win.JustPressed(pixelgl.KeyBackspace) || win.JustPressed(pixelgl.KeySpace) {
+			if win.JustPressed(pixel.Key0) || win.JustPressed(pixel.KeyKP0) ||
+				win.JustPressed(pixel.KeyBackspace) || win.JustPressed(pixel.KeySpace) {
 				updateBoard(0, imd)
 			}
 		}
@@ -213,5 +213,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

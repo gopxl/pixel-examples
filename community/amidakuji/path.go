@@ -7,7 +7,7 @@ import (
 	gg "github.com/gopxl/pixel-examples/community/amidakuji/glossary"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 )
 
 // Path is for animating a path to the prize in a ladder.

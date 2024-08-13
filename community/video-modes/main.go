@@ -4,15 +4,15 @@ import (
 	"fmt"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
-	"github.com/gopxl/pixel/v2/text"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/text"
 	"golang.org/x/image/colornames"
 	"golang.org/x/image/font/basicfont"
 )
 
 type setting struct {
-	mode    *pixelgl.VideoMode
-	monitor *pixelgl.Monitor
+	mode    *opengl.VideoMode
+	monitor *opengl.Monitor
 }
 
 var (
@@ -24,11 +24,11 @@ var (
 )
 
 func run() {
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Video Modes",
 		Bounds: pixel.R(0, 0, 800, 600),
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -36,7 +36,7 @@ func run() {
 	atlas := text.NewAtlas(basicfont.Face7x13, text.ASCII)
 
 	// Retrieve all monitors.
-	monitors := pixelgl.Monitors()
+	monitors := opengl.Monitors()
 
 	texts = make([]*text.Text, len(monitors))
 	key := byte('0')
@@ -74,11 +74,11 @@ func run() {
 		}
 		staticText.Draw(win, pixel.IM)
 
-		if win.JustPressed(pixelgl.KeyEscape) {
+		if win.JustPressed(pixel.KeyEscape) {
 			win.SetClosed(true)
 		}
 
-		if win.JustPressed(pixelgl.KeyW) {
+		if win.JustPressed(pixel.KeyW) {
 			if isFullScreen {
 				// Switch to windowed and backup the correct monitor.
 				win.SetMonitor(nil)
@@ -112,5 +112,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

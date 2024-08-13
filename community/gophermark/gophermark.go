@@ -11,7 +11,7 @@ import (
 	_ "image/png"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2/backends/opengl"
 	"golang.org/x/image/colornames"
 )
 
@@ -48,7 +48,7 @@ func (g *gopher) update(dt float64) {
 }
 
 var (
-	win     *pixelgl.Window
+	win     *opengl.Window
 	pic     pixel.Picture
 	sprite  *pixel.Sprite
 	gophers []gopher
@@ -71,11 +71,11 @@ func loadPicture(path string) (pixel.Picture, error) {
 
 func run() {
 	rand.Seed(time.Now().UnixNano())
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Gophermark",
 		Bounds: pixel.R(0, 0, 1000, 800),
 	}
-	w, err := pixelgl.NewWindow(cfg)
+	w, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -95,11 +95,11 @@ func run() {
 	}
 
 	last := time.Now()
-	for !win.Closed() && !win.JustPressed(pixelgl.KeyEscape) {
+	for !win.Closed() && !win.JustPressed(pixel.KeyEscape) {
 		dt := time.Since(last).Seconds()
 		last = time.Now()
 
-		if win.Pressed(pixelgl.MouseButtonLeft) {
+		if win.Pressed(pixel.MouseButtonLeft) {
 			mouse := win.MousePosition()
 			for i := 0; i < 10; i++ {
 				gophers = append(gophers, newGopher(mouse))
@@ -127,5 +127,5 @@ func run() {
 }
 
 func main() {
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

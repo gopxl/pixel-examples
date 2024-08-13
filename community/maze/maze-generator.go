@@ -15,10 +15,10 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/gopxl/pixel/v2"
 	"github.com/gopxl/pixel-examples/community/maze/stack"
-	"github.com/gopxl/pixel/v2/imdraw"
-	"github.com/gopxl/pixel/v2/pixelgl"
+	"github.com/gopxl/pixel/v2"
+	"github.com/gopxl/pixel/v2/backends/opengl"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 
 	"github.com/pkg/profile"
 	"golang.org/x/image/colornames"
@@ -216,12 +216,12 @@ func run() {
 	// Set game FPS manually
 	fps := time.Tick(time.Second / 60)
 
-	cfg := pixelgl.WindowConfig{
+	cfg := opengl.WindowConfig{
 		Title:  "Pixel Rocks! - Maze example",
 		Bounds: pixel.R(0, 0, float64(screenHeight), float64(screenWidth)),
 	}
 
-	win, err := pixelgl.NewWindow(cfg)
+	win, err := opengl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -231,7 +231,7 @@ func run() {
 	gridIMDraw := imdraw.New(nil)
 
 	for !win.Closed() {
-		if win.JustReleased(pixelgl.KeyR) {
+		if win.JustReleased(pixel.KeyR) {
 			fmt.Println("R pressed")
 			grid, backTrackStack, currentCell = setupMaze(cols, rows)
 		}
@@ -298,7 +298,7 @@ func parseArgs() (uint, uint, uint) {
 	return *mazeWidthPtr, *mazeHeightPtr, *wallSizePtr
 }
 
-func updateFPSDisplay(win *pixelgl.Window, cfg *pixelgl.WindowConfig, frames *int, grid []*cell, second <-chan time.Time) {
+func updateFPSDisplay(win *opengl.Window, cfg *opengl.WindowConfig, frames *int, grid []*cell, second <-chan time.Time) {
 	*frames++
 	select {
 	case <-second:
@@ -313,5 +313,5 @@ func main() {
 	if debug {
 		defer profile.Start().Stop()
 	}
-	pixelgl.Run(run)
+	opengl.Run(run)
 }

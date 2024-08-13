@@ -4,7 +4,7 @@ import (
 	"math"
 
 	"github.com/gopxl/pixel/v2"
-	"github.com/gopxl/pixel/v2/imdraw"
+	"github.com/gopxl/pixel/v2/ext/imdraw"
 	"golang.org/x/image/colornames"
 )
 
