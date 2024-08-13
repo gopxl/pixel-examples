@@ -32,6 +32,19 @@ func AtlasASCII() *text.Atlas {
 	return atlasASCII
 }
 
+func Asset(name string) ([]byte, error) {
+	return ioutil.ReadFile(name)
+}
+
+func AssetDir(name string) ([]string, error) {
+	f, err := os.Open(name)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	return f.Readdirnames(-1)
+}
+
 // NewAtlas newly loads and prepares a set of images of characters or symbols to be drawn.
 // Arg runeSet would be set to nil if non-ASCII characters are not in use.
 func NewAtlas(nameAssetTTF string, size float64, runeSet []rune) *text.Atlas {

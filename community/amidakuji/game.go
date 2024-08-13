@@ -558,15 +558,15 @@ func (g *game) HandlingEvents(dt float64) {
 	// Notice that all function calls as go routine are non-blocking, but the others will block the main thread.
 
 	// system
-	if g.window.JustReleased(opengl.KeyEscape) {
+	if g.window.JustReleased(pixel.KeyEscape) {
 		g.window.SetClosed(true)
 	}
-	if g.window.JustReleased(opengl.KeySpace) {
+	if g.window.JustReleased(pixel.KeySpace) {
 		g.Pause()
 		dialog.Message("%s", "Pause").Title("PPAP").Info()
 		g.Resume()
 	}
-	if g.window.JustReleased(opengl.KeyTab) {
+	if g.window.JustReleased(pixel.KeyTab) {
 		if g.window.Monitor() == nil {
 			g.SetFullScreenMode(true)
 		} else {
@@ -575,12 +575,12 @@ func (g *game) HandlingEvents(dt float64) {
 	}
 
 	// scalpel mode
-	if g.window.JustReleased(opengl.MouseButtonRight) {
+	if g.window.JustReleased(pixel.MouseButtonRight) {
 		go func() {
 			g.isScalpelMode = !g.isScalpelMode
 		}()
 	}
-	if g.window.JustReleased(opengl.MouseButtonLeft) {
+	if g.window.JustReleased(pixel.MouseButtonLeft) {
 		// ---------------------------------------------------
 		if !jukebox.IsPlaying() {
 			jukebox.Play()
@@ -613,18 +613,18 @@ func (g *game) HandlingEvents(dt float64) {
 	}
 
 	// game ctrl
-	if g.window.JustReleased(opengl.Key1) { // shuffle
+	if g.window.JustReleased(pixel.Key1) { // shuffle
 		go func() {
 			g.Shuffle(10, 750)
 		}()
 	}
-	if g.window.JustReleased(opengl.Key2) { // find path slow
+	if g.window.JustReleased(pixel.Key2) { // find path slow
 		go func() {
 			g.ResetPaths()
 			g.AnimatePaths(g.AnimatePath)
 		}()
 	}
-	if g.window.JustReleased(opengl.Key3) { // find path fast
+	if g.window.JustReleased(pixel.Key3) { // find path fast
 		go func() {
 			g.ResetPaths()
 			g.AnimatePaths(func(participant int) {
@@ -634,27 +634,27 @@ func (g *game) HandlingEvents(dt float64) {
 	}
 
 	// camera
-	if g.window.JustReleased(opengl.KeyEnter) {
+	if g.window.JustReleased(pixel.KeyEnter) {
 		go func() {
 			g.camera.Rotate(-90)
 		}()
 	}
-	if g.window.Pressed(opengl.KeyRight) {
+	if g.window.Pressed(pixel.KeyRight) {
 		go func(dt float64) { // This camera will go diagonal while the case is in middle of rotating the camera.
 			g.camera.Move(pixel.V(1000*dt, 0).Rotated(-g.camera.Angle()))
 		}(dt)
 	}
-	if g.window.Pressed(opengl.KeyLeft) {
+	if g.window.Pressed(pixel.KeyLeft) {
 		go func(dt float64) {
 			g.camera.Move(pixel.V(-1000*dt, 0).Rotated(-g.camera.Angle()))
 		}(dt)
 	}
-	if g.window.Pressed(opengl.KeyUp) {
+	if g.window.Pressed(pixel.KeyUp) {
 		go func(dt float64) {
 			g.camera.Move(pixel.V(0, 1000*dt).Rotated(-g.camera.Angle()))
 		}(dt)
 	}
-	if g.window.Pressed(opengl.KeyDown) {
+	if g.window.Pressed(pixel.KeyDown) {
 		go func(dt float64) {
 			g.camera.Move(pixel.V(0, -1000*dt).Rotated(-g.camera.Angle()))
 		}(dt)

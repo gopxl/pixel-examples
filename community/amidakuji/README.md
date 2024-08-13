@@ -77,7 +77,7 @@ $ make
 
 #### Library
 - [Pixel](https://github.com/gopxl/pixel/v2/tree/7cff3ce3aed80129b7b1dd57e63439426e11b6ee)
-- [Beep](https://github.com/gopxl/beep/tree/63cc6fbbac46dba1a03e55f0ebc965d6c82ca8e1)
+- [Beep](https://github.com/gopxl/beep/v2/tree/63cc6fbbac46dba1a03e55f0ebc965d6c82ca8e1)
 - [GLFW 3.2](https://github.com/go-gl/glfw/tree/513e4f2bf85c31fba0fc4907abd7895242ccbe50/v3.2/glfw)
 - [dialog](https://github.com/sqweek/dialog/tree/2f9d9e5dd848a3bad4bdd0210c73bb90c13a3791)
 
