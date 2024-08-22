@@ -8,7 +8,7 @@ require (
 	github.com/go-gl/mathgl v1.1.0
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/gopxl/beep/v2 v2.0.0
-	github.com/gopxl/pixel/v2 v2.2.1-0.20240821160809-8ed417f54c57
+	github.com/gopxl/pixel/v2 v2.2.1-0.20240822144506-2de4cad73af0
 	github.com/pkg/errors v0.9.1
 	github.com/pkg/profile v1.7.0
 	github.com/salviati/go-tmx v0.0.0-20180901011116-8dae25beffeb
@@ -24,9 +24,10 @@ require (
 	github.com/go-gl/gl v0.0.0-20231021071112-07e5d0ea2e71 // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20240506104042-037f3cc74f2a // indirect
 	github.com/google/pprof v0.0.0-20211214055906-6f57359322fd // indirect
-	github.com/gopxl/glhf/v2 v2.0.0 // indirect
+	github.com/gopxl/glhf/v2 v2.1.0 // indirect
 	github.com/gopxl/mainthread/v2 v2.1.1 // indirect
 	github.com/jfreymuth/oggvorbis v1.0.5 // indirect
 	github.com/jfreymuth/vorbis v1.0.2 // indirect
+	golang.org/x/exp v0.0.0-20240808152545-0cdaa3abc0fa // indirect
 	golang.org/x/sys v0.18.0 // indirect
 )
