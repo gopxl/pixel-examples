@@ -8,7 +8,8 @@ require (
 	github.com/go-gl/mathgl v1.1.0
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/gopxl/beep/v2 v2.0.0
-	github.com/gopxl/pixel/v2 v2.2.1-0.20240822144506-2de4cad73af0
+	github.com/gopxl/pixel/v2 v2.2.1-0.20240821160809-8ed417f54c57
+	github.com/inkyblackness/imgui-go/v4 v4.7.0
 	github.com/pkg/errors v0.9.1
 	github.com/pkg/profile v1.7.0
 	github.com/salviati/go-tmx v0.0.0-20180901011116-8dae25beffeb

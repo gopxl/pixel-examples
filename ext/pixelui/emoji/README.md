@@ -1,0 +1,1 @@
+These emojis are from https://github.com/egonelbre/gophers
