@@ -1,6 +1,8 @@
 package main
 
 import (
+	"image/png"
+
 	"github.com/gopxl/pixel/v2"
 	"github.com/gopxl/pixel/v2/backends/opengl"
 	"github.com/gopxl/pixel/v2/ext/atlas"
@@ -10,8 +12,8 @@ import (
 var (
 	Atlas  atlas.Atlas
 	group  = Atlas.MakeGroup()
-	hiking = group.AddFile("hiking.png")
-	gopher = Atlas.AddFile("thegopherproject.png")
+	hiking = group.AddFile("hiking.png", png.Decode)
+	gopher = Atlas.AddFile("thegopherproject.png", png.Decode)
 )
 
 func run() {
